@@ -1,33 +1,8 @@
 require 'HTTParty' 
 
-@auth={username:'dbryansmith', password: 'Yodarules13!'}
+@auth={username:'un', password: 'pass'}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# in theory the below should work, however the last .each block to get the codes is bombing out due to
-# one of the URLs not working: https://api.github.com/orgs/BoomTownROI/public_members{/member}
-# testing separately, the only ones that returned 200s were the top level one, /repos/, and /events/ 
-# the rest were 404, not founds
-
-# tried again later and now current code is just not outputting anything on this method
 def response_codes
     response = HTTParty.get('https://api.github.com/orgs/BoomTownROI', basic_auth: @auth)
     url_pattern = /(http[s]?:\/\/)?api\.github\.([^\/\s]+\/)(.*)/
@@ -73,9 +48,7 @@ end
 
   end
 
-# I want to understand this a little bit better, I know it does what I want it to do, but I'm not sure exactly how and I'm not sure why 
-# it's printing out a bunch of empty arrays for the top level domain and not just the 1 ID that it has
-# puts result
+puts result
 
 
 
@@ -89,7 +62,7 @@ def date_test
     updated_date > created_date 
 end
 
-# puts date_test
+puts date_test
 
 
 
@@ -103,4 +76,4 @@ def repo_comparison
     top_object_array["public_repos"] > repos_array.count
 end
 
-# puts repo_comparison
+puts repo_comparison

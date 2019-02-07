@@ -23,7 +23,6 @@ end
 response_codes
 
 
-
 def get_ids(url)
     response = HTTParty.get(url, basic_auth: @auth)
     arr = JSON.parse(response.body)
